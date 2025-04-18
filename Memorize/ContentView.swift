@@ -21,19 +21,23 @@ struct ContentView: View {
     }
 }
 struct CardView: View {
-    var isFaceUp: Bool = false
-    var body: some View {
+    @State var isFaceUp = false // add @State to change variables inside a View as View is immutable
+    
+    var body: some View { // Views are immutable
         ZStack {
+            let cardBase = RoundedRectangle(cornerRadius: 12) // local variable
             if isFaceUp {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundStyle(.white)
-                RoundedRectangle(cornerRadius: 12)
+                cardBase
+                    .fill(.white)
+                cardBase
                     .strokeBorder(lineWidth: 2)
                 Text("👻")
                     .font(.largeTitle)
             } else {
-                RoundedRectangle(cornerRadius: 12)
+                cardBase.fill()
             }
+        }.onTapGesture {
+            isFaceUp.toggle()
         }
     }
 }
