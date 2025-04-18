@@ -12,7 +12,7 @@ struct ContentView: View {
         HStack {
             CardView(isFaceUp: true)
             CardView()
-            CardView(isFaceUp: true)
+            CardView()
             CardView()
         }
         .foregroundStyle(.orange)
